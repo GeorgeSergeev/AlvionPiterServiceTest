@@ -1,0 +1,3 @@
+INSERT INTO JOB_STATUSES (STATUS) values ('done');
+INSERT INTO JOB_STATUSES (STATUS) values ('error');
+INSERT INTO JOB_STATUSES (STATUS) values ('registered');

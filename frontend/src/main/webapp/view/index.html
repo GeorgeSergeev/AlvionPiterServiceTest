@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="resources/lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="resources/lib/jquery-ui/themes/base/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="resources/lib/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.min.css"/>
+    <link rel="stylesheet" href="resources/css/styles.css"/>
+    <script src="resources/lib/jquery/jquery.min.js"></script>
+    <script src="resources/lib/underscore/underscore-min.js"></script>
+    <script src="resources/lib/moment/moment.js"></script>
+    <script src="resources/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="resources/lib/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.min.js"></script>
+    <script src="resources/lib/jqueryui-timepicker-addon/dist/i18n/jquery-ui-timepicker-ru.js"></script>
+    <script src="resources/lib/jquery.inputmask/jquery.inputmask.bundle.js"></script>
+    <script src="resources/js/app.js"></script>
+    <script src="resources/js/orderFormController.js"></script>
+    <script src="resources/js/orderTableController.js"></script>
+    <script src="resources/js/notificationController.js"></script>
+    <script src="resources/js/uiBlockerController.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Test App</a>
+            </div>
+            <div id="" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Заказы</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="container">
+
+        <div class="form-container">
+            <div class="form-header">Создание заказа</div>
+            <div class="row">
+
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="datetimeInput" class="control-label">Обработать заказ через </label>
+                        <div class="input-group">
+                            <input  class="form-control input-sm" id="datetimeInput" >
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="orderSubmit">Отправить</button>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="messageInput" class="control-label">Сообщение</label>
+                        <input  maxlength="20" class="form-control message-input input-sm" id="messageInput" >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-header">Список заказов</div>
+        <table class="table table-condensed table-hover" id="orderTable">
+            <tr>
+                <th style="width: 4%">#</th>
+                <th style="width: 15%">Дата создания заказа</th>
+                <th style="width: 15%">Дата, указанная при создании заказа</th>
+                <th style="width: 25%">Входная строка</th>
+                <th style="width: 32%">Результат обработки</th>
+                <th style="width: 9%">Статус</th>
+            </tr>
+        </table>
+
+    </div> <!-- /container -->
+</div>
+<div class="notification-container" id="notificationContainer"></div>
+<div class="ui-block" id="uiBlocker">
+    <div class="loading-icon"></div>
+</div>
+</body>
+</html>

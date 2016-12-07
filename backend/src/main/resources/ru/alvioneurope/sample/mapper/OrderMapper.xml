@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ru.alvioneurope.sample.mapper.OrderMapper">
+
+    <resultMap type='ru.alvioneurope.sample.model.Order' id='OrderMap'>
+        <id property='id' column='ORDER_ID'/>
+        <result property='inputString' column='IN_STRING'/>
+        <result property='outputString' column='OUT_STRING'/>
+        <result property='creationTime' column='ORDER_CREATION_TIME'/>
+        <result property='executionTime' column='ORDER_EXECUTION_TIME'/>
+        <result property='status' column='STATUS'/>
+    </resultMap>
+
+    <resultMap type='ru.alvioneurope.sample.model.Order' id='OrderStatusMap'>
+        <id property='id' column='ORDER_ID'/>
+        <result property='status' column='STATUS'/>
+    </resultMap>
+
+    <select id="getOrderHistory" resultMap="OrderMap" flushCache="true">
+    SELECT *
+    FROM TABLE(TEST_APP_PACK.GET_LAST_7_ORDERS)
+    </select>
+
+    <select id="getOrdersStatus" resultMap="OrderStatusMap" flushCache="true">
+        SELECT *
+        FROM TABLE(TEST_APP_PACK.get_finished_jobs)
+    </select>
+
+    <select id="clearOldOrdersStatus" statementType="CALLABLE">
+        call TEST_APP_PACK.DEL_REC(#{orders, mode=IN, jdbcType=VARCHAR})
+    </select>
+
+    <select useCache="false" id="storeOrder" statementType="CALLABLE" parameterType="java.util.HashMap">
+        {
+        call TEST_APP_PACK.create_order( #{string, mode=IN, jdbcType=VARCHAR, javaType=java.lang.String},
+        #{startTime, mode=IN, jdbcType=VARCHAR, javaType=java.lang.String},
+        #{orderId, mode=OUT, jdbcType=INTEGER, javaType=java.lang.Long})
+        }
+    </select>
+</mapper>
