@@ -19,3 +19,16 @@ Application installation:
 
 UI Configuration:
 1. update url of backend server at  frontend\src\main\webapp\resources\config\config.json 
+
+
+Autotests prepare
+
+1. Chrome Driver setup
+2. Download chromedriver (https://sites.google.com/a/chromium.org/chromedriver/)
+3. Add chromedriver path to  system envirovement
+
+Autotests run
+1. Tests are placed  \test_task\test-task\src\test\java\ru\alvioneurope\ui\tests
+2. Use maven for build 
+- set source dir path
+- set CommandLine: -Dit.test=<test class reference> -Dwebdriver.driver=chrome -DforkCount=0 clean integration-test serenity:aggregate
